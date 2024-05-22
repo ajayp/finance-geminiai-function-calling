@@ -1,6 +1,6 @@
-### Leveraging Function Calling with Google Gemini API
+### Leveraging Function Calling with Google Gemini API in Node.js
 
-This project demonstrates function calling with the Google Gemini API. It provides custom functions to interact with financial APIs, retrieving real-time stock prices, company overviews, news headlines, and sentiment analysis. Gemini can call these functions based on user queries, enhancing its capabilities within conversations. 
+This project demonstrates function calling with the Google Gemini API. It provides custom functions to interact with financial APIs, retrieving real-time stock prices, company overviews, news headlines, and sentiment analysis. Gemini can call these functions based on user queries, enhancing its capabilities within conversations.   
 
 #### What is Function Calling?
 
@@ -14,8 +14,6 @@ Function calling is a powerful feature that allows Gemini to interact with exter
    - Function name: The name of the function to be called.
    - Arguments: The specific values (or suggestions) to pass as input to the function.
 4. External execution: This output is then processed by a separate system or environment that can execute the function based on the provided information. The results of the function call are then relayed back to Gemini to be incorporated into its final response.
-
-This code is a proof of concept to test  provides functions to interact with various financial APIs to retrieve data such as stock prices, company overviews, news headlines, and sentiment analysis. It utilizes the Alpha Vantage and Polygon APIs for financial data retrieval.
 
 #### Use Cases for Function Calling
 
@@ -82,7 +80,6 @@ console.log(result.response.text() + '\n');
 ```
 
 * **Response:** 'Microsoft has announced...'
-
 
 #### Prerequisites
 
