@@ -19,40 +19,27 @@ Function calling is a powerful feature that allows Gemini to interact with exter
 
 This code is a proof of concept to test  provides functions to interact with various financial APIs to retrieve data such as stock prices, company overviews, news headlines, and sentiment analysis. It utilizes the Alpha Vantage and Polygon APIs for financial data retrieval.
 
-#### Benefits
+#### Use Cases for Function Calling
 
-* **Real-Time Data Access:**  Integrate external APIs to retrieve up-to-date information.
-* **Enhanced Query Understanding:**  The model can prompt for function calls, leading to more efficient query handling.
-* **Integration with Various Services:** Connect to databases, CRM systems, and other services for richer responses.
+1. **Automated Financial Data Retrieval:**
+   - Developers can create custom functions that interact with financial APIs (such as Alpha Vantage and Polygon) to retrieve real-time stock prices, historical data, company overviews, and news headlines.
+   - Gemini can call these functions based on user queries, providing relevant financial information without leaving the conversation.
 
-#### Prerequisites
+2. **Dynamic Currency Conversion:**
+   - Suppose a user wants to convert an amount from one currency to another. By defining a `getExchangeRate` function, Gemini can calculate the exchange rate and perform the conversion seamlessly.
+   - Example query: "Convert 100 USD to EUR."
 
-To use these functions, you need to obtain API keys for Alpha Vantage and Google Gemini.
+3. **Sentiment Analysis Integration:**
+   - A sentiment analysis API can be integrated into Gemini using a custom function. When discussing a specific stock or company, Gemini can call this function to provide sentiment scores based on recent news articles.
+   - Example query: "What is the sentiment around Tesla stock?"
 
-- [Alpha Vantage API Key](https://www.alphavantage.co/support/#api-key)
-- [Polygon API Key](https://polygon.io/dashboard/api-keys)
-- [Google Gemini API Key](https://aistudio.google.com/app/apikey)
+4. **Interactive Financial Planning:**
+   - Gemini can guide users through financial planning scenarios by calling functions related to investment strategies, risk assessment, and portfolio diversification.
+   - Example query: "What would happen if I invested 10% more in tech stocks?"
 
-Set these keys as environment variables: `ALPHA_VANTAGE_API_KEY`, `POLYGON_API_KEY` and `GEMINI_API_KEY`.
-
-This project demonstrates the use of different APIs for data retrieval and analysis. Specifically, it utilizes the Polygon API to showcase an alternative to Alpha Vantage.
-
-_Note - Alpha Vantage API has rate limits that restrict the number of requests per day, and using a different key will not work unless your IP address is changed._
-
-#### Installation
-
-Before running the code, install the required dependencies using npm:
-
-```bash
-npm install
-```
-#### Usage
-```bash
-node main.js
-```
 #### Functions
 
-The code consists of several functions:
+For this proof of concept, code consists of several functions:
 
 - `getExchangeRate`: Get the exchange rate for currencies between countries.
 - `getStockPrice`: Fetch the current stock price of a given company.
@@ -96,5 +83,29 @@ console.log(result.response.text() + '\n');
 
 * **Response:** 'Microsoft has announced...'
 
-**Key Takeaway:** By maintaining context from previous prompts, Gemini can handle subsequent queries more efficiently and provide more relevant responses.
 
+#### Prerequisites
+
+To use these functions, you need to obtain API keys for Alpha Vantage and Google Gemini.
+
+- [Alpha Vantage API Key](https://www.alphavantage.co/support/#api-key)
+- [Polygon API Key](https://polygon.io/dashboard/api-keys)
+- [Google Gemini API Key](https://aistudio.google.com/app/apikey)
+
+Set these keys as environment variables: `ALPHA_VANTAGE_API_KEY`, `POLYGON_API_KEY` and `GEMINI_API_KEY`.
+
+This project demonstrates the use of different APIs for data retrieval and analysis. Specifically, it utilizes the Polygon API to showcase an alternative to Alpha Vantage.
+
+_Note - Alpha Vantage API has rate limits that restrict the number of requests per day, and using a different key will not work unless your IP address is changed._
+
+#### Installation
+
+Before running the code, install the required dependencies using npm:
+
+```bash
+npm install
+```
+#### Usage
+```bash
+node main.js
+```
