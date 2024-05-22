@@ -1,14 +1,14 @@
-## Leveraging Function Calling with Google Gemini API
+### Leveraging Function Calling with Google Gemini API
 
 This project demonstrates a proof-of-concept for leveraging **function calling** with the Google Gemini API.
 
 This code is a proof of concept to test provides functions to interact with various financial APIs to retrieve data such as stock prices, company overviews, news headlines, and sentiment analysis.
 
-### What is it?
+#### What is it?
 
 Function calling is a powerful feature that allows Gemini to interact with external code and tools. Instead of being limited to just generating text, Gemini can now call custom functions written in various programming languages, like Python. This enables the model to perform complex actions, access data, and complete tasks beyond its core language capabilities.
 
-### How it Works
+#### How it Works
 
 1. User provides functions: The user defines functions that perform specific actions, providing the code for Gemini to access. These functions could be simple calculations, accessing APIs, or interacting with databases.
 2. Gemini identifies actions: When processing a query, Gemini identifies parts where a function call is necessary to complete the task. This could be based on the query itself, context, or even user-specified instructions.
@@ -19,13 +19,13 @@ Function calling is a powerful feature that allows Gemini to interact with exter
 
 This code is a proof of concept to test  provides functions to interact with various financial APIs to retrieve data such as stock prices, company overviews, news headlines, and sentiment analysis. It utilizes the Alpha Vantage and Polygon APIs for financial data retrieval.
 
-### Benefits
+#### Benefits
 
 * **Real-Time Data Access:**  Integrate external APIs to retrieve up-to-date information.
 * **Enhanced Query Understanding:**  The model can prompt for function calls, leading to more efficient query handling.
 * **Integration with Various Services:** Connect to databases, CRM systems, and other services for richer responses.
 
-### Prerequisites
+#### Prerequisites
 
 To use these functions, you need to obtain API keys for Alpha Vantage and Google Gemini.
 
@@ -37,20 +37,20 @@ Set these keys as environment variables: `ALPHA_VANTAGE_API_KEY`, `POLYGON_API_K
 
 This project demonstrates the use of different APIs for data retrieval and analysis. Specifically, it utilizes the Polygon API to showcase an alternative to Alpha Vantage.
 
-**Note that the Alpha Vantage API has rate limits that restrict the number of requests per day, and using a different key will not work unless your IP address is changed.**
+_Note - Alpha Vantage API has rate limits that restrict the number of requests per day, and using a different key will not work unless your IP address is changed._
 
-### Installation
+#### Installation
 
 Before running the code, install the required dependencies using npm:
 
 ```bash
 npm install
 ```
-### Usage
+#### Usage
 ```bash
 node main.js
 ```
-### Functions
+#### Functions
 
 The code consists of several functions:
 
@@ -60,7 +60,7 @@ The code consists of several functions:
 - `getCompanyNews`: Get the latest news headlines for a given company.
 - `getNewsWithSentiment`: Gets live and historical market news and sentiment data.
 
-### Function Calling with Prompts
+#### Function Calling with Prompts
 
 The function calling capability allows Gemini to not only execute functions based on prompts but also maintain context throughout a conversation.   Example:
 
@@ -76,13 +76,11 @@ prompt = "Market news about the company?";
 result = await chat.sendMessage(prompt);
 result = await handleFunctionCalls(result, chat);
 console.log(result.response.text() + '\n');
-
 ```
-
 **Explanation:**
 
 **Prompt 1:**
-* **How much is the price of Microsoft stock?** triggers Gemini to call the `getStockPrice` function.  Gemini identifiws the intent of the prompt and determine that the ticker symbol "MSFT" is required.  This results in the following function call:
+* **How much is the price of Microsoft stock?** triggers Gemini to call the `getStockPrice` function.  Gemini identifies the intent of the prompt and determine that the ticker symbol "MSFT" is required.  This results in the following function call:
 
 ```json
 [{"name":"getStockPrice","args":{"ticker":"MSFT"}}]
