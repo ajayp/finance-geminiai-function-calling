@@ -1,14 +1,12 @@
 ### Leveraging Function Calling with Google Gemini API
 
-This project demonstrates a proof-of-concept for leveraging **function calling** with the Google Gemini API.
+This project demonstrates function calling with the Google Gemini API. It provides custom functions to interact with financial APIs, retrieving real-time stock prices, company overviews, news headlines, and sentiment analysis. Gemini can call these functions based on user queries, enhancing its capabilities within conversations. 
 
-This code is a proof of concept to test provides functions to interact with various financial APIs to retrieve data such as stock prices, company overviews, news headlines, and sentiment analysis.
-
-#### What is it?
+#### What is Function Calling?
 
 Function calling is a powerful feature that allows Gemini to interact with external code and tools. Instead of being limited to just generating text, Gemini can now call custom functions written in various programming languages, like Python. This enables the model to perform complex actions, access data, and complete tasks beyond its core language capabilities.
 
-#### How it Works
+#### How it works
 
 1. User provides functions: The user defines functions that perform specific actions, providing the code for Gemini to access. These functions could be simple calculations, accessing APIs, or interacting with databases.
 2. Gemini identifies actions: When processing a query, Gemini identifies parts where a function call is necessary to complete the task. This could be based on the query itself, context, or even user-specified instructions.
@@ -37,9 +35,9 @@ This code is a proof of concept to test  provides functions to interact with var
    - Gemini can guide users through financial planning scenarios by calling functions related to investment strategies, risk assessment, and portfolio diversification.
    - Example query: "What would happen if I invested 10% more in tech stocks?"
 
-#### Functions
+#### Functions in the code
 
-For this proof of concept, code consists of several functions:
+Code consists of several functions:
 
 - `getExchangeRate`: Get the exchange rate for currencies between countries.
 - `getStockPrice`: Fetch the current stock price of a given company.
@@ -49,7 +47,9 @@ For this proof of concept, code consists of several functions:
 
 #### Function Calling with Prompts
 
-The function calling capability allows Gemini to not only execute functions based on prompts but also maintain context throughout a conversation.   Example:
+The function calling capability allows Gemini to not only execute functions based on prompts but also maintain context throughout a conversation.   
+
+Example:
 
 ```javascript
 // Prompt 1:
@@ -86,7 +86,7 @@ console.log(result.response.text() + '\n');
 
 #### Prerequisites
 
-To use these functions, you need to obtain API keys for Alpha Vantage and Google Gemini.
+To use these functions, you need to obtain API keys for Alpha Vantage, Polygon and Google Gemini.
 
 - [Alpha Vantage API Key](https://www.alphavantage.co/support/#api-key)
 - [Polygon API Key](https://polygon.io/dashboard/api-keys)
