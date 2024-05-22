@@ -100,5 +100,3 @@ console.log(result.response.text() + '\n');
 
 **Key Takeaway:** By maintaining context from previous prompts, Gemini can handle subsequent queries more efficiently and provide more relevant responses.
 
-
-# finance-geminiai-function-calling
