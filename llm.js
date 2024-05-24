@@ -39,12 +39,12 @@ async function handleFunctionCalls(result, chat) {
         if (call) {
             try {
                 // Call external API
-                const apiFnResponse = await apiServicesFunctions[call.name](call.args);
+                const apiResponse = await apiServicesFunctions[call.name](call.args);
                 // Send the API response back to Gemini which will use NLP and send back a response
                 const llmResponse = await chat.sendMessage([{
                     functionResponse: {
                         name: call.name,
-                        response: typeof apiFnResponse === 'string' ? JSON.parse(apiFnResponse) : apiFnResponse
+                        response: typeof apiResponse === 'string' ? JSON.parse(apiResponse) : apiResponse
                     }
                 }]);
                 console.log(llmResponse.response.text() + '\n');
