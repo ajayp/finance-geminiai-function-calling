@@ -19,14 +19,24 @@ const generativeModel = genAI.getGenerativeModel({
 exports.generativeModel = generativeModel;
 
 /**
- * Handles function calls from the Gemini model, executing corresponding API calls and sending responses back.
+ * Processes function calls specified in the response from the Gemini model, executes corresponding API calls,
+ * and sends the results back to the Gemini NLP system.
  *
  * @async
  * @function handleFunctionCalls
- * @param {Object} resp - The response object from the Gemini model, containing potential function calls.
- * @param {Object} chat - The chat object used to interact with the Gemini model.
- * @throws {Error} Throws an error if the model doesn't return any function calls,
- *                  indicating potential issues with the LLM or quotas.
+ * @param {Object} resp - The response object from the Gemini model, which contains potential function calls.
+ * @param {Object} chat - The chat object used to interact with the Gemini model, facilitating communication.
+ * @throws {Error} Throws an error if the response does not include any function calls, indicating potential issues
+ * with the Language Learning Model (LLM) or usage quotas.
+ *
+ * The function performs the following steps:
+ * 1. Checks if there are any function calls in the response object. If none are found, it throws an error.
+ * 2. Iterates over each function call in the response.
+ * 3. For each function call, it:
+ *    a. Executes the corresponding API call defined in `apiServicesFunctions`.
+ *    b. Sends the API response back to the Gemini model using the `chat` object.
+ *    c. Logs the text response from the Gemini model to the console.
+ * 4. If any error occurs during the API call execution or response handling, it logs the error message to the console.
  */
 async function handleFunctionCalls(resp ={}, chat ={}) {
     const functionCallsLength = resp?.response?.functionCalls()?.length || 0;
