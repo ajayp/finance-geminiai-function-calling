@@ -1,4 +1,4 @@
-### Leveraging Function Calling with Google Gemini API in Node.js
+### Leveraging Function Calling with Google Gemini API
 
 This project demonstrates function calling with the Google Gemini API. It provides custom functions to interact with financial APIs, retrieving real-time stock prices, company overviews, news headlines, and sentiment analysis. Gemini can call these functions based on user queries, enhancing its capabilities within conversations.
 
@@ -53,33 +53,33 @@ Example:
 // Prompt 1:
 let prompt = "How much is the price of Microsoft stock?";
 let result = await chat.sendMessage(prompt);
-result = await handleFunctionCalls(result, chat);
+await handleFunctionCalls(result, chat);
 console.log(result.response.text() + '\n');
 
 // Prompt 2:
-prompt = "Market news about the company?";
+prompt = "What are the latest developments from their competitors?";
 result = await chat.sendMessage(prompt);
-result = await handleFunctionCalls(result, chat);
+await handleFunctionCalls(result, chat);
 console.log(result.response.text() + '\n');
 ```
 **Explanation:**
 
-**Prompt 1:**
-* **How much is the price of Microsoft stock?** triggers Gemini to call the `getStockPrice` function.  Gemini identifies the intent of the prompt and determine that the ticker symbol "MSFT" is required.  This results in the following function call:
+**Prompt 1: **
+* **How much is the price of Microsoft stock?** - triggers Gemini to call the `getStockPrice` function.  Gemini identifies the intent of the prompt and determine that the ticker symbol "MSFT" is required.  This results in the following function call:
 
 ```json
 [{"name":"getStockPrice","args":{"ticker":"MSFT"}}]
 ```
-* **Response:** 'The current price of MSFT is 278.14'
+* **Response:** `The current price of MSFT is 278.14`
 
 **Prompt 2:**
-* **What are the latest developments from their competitors?** leverages the context established in the previous prompt.  Gemini recognizes that the "company" refers to Microsoft (MSFT) and executes the following function call:
+* **What are the latest developments from their competitors?** - leverages the context established in the previous prompt.  Gemini recognizes that the "company" refers to Microsoft (MSFT) and executes the following function call:
 
 ```json
 [{"name":"getCompanyNews","args":{"ticker":"MSFT"}}]
 ```
 
-* **Response:** 'The latest news headlines I found about MSFT competitors include:'
+* **Response:** `The latest news headlines I found about MSFT competitors include:`
 
 #### Prerequisites
 
@@ -89,7 +89,7 @@ To use these functions, you need to obtain API keys for Alpha Vantage, Polygon a
 - [Polygon API Key](https://polygon.io/dashboard/api-keys)
 - [Google Gemini API Key](https://aistudio.google.com/app/apikey)
 
-Set these keys as environment variables: `ALPHA_VANTAGE_API_KEY`, `POLYGON_API_KEY` and `GEMINI_API_KEY`.
+Set these keys as environment variables: `ALPHA_VANTAGE_API_KEY`, `POLYGON_API_KEY` and `GEMINI_API_KEY`
 
 This project demonstrates the use of different APIs for data retrieval and analysis. Specifically, it utilizes the Polygon API to showcase an alternative to Alpha Vantage.
 
