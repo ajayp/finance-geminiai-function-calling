@@ -1,6 +1,6 @@
 ### Leveraging Function Calling with Google Gemini API in Node.js
 
-This project demonstrates function calling with the Google Gemini API. It provides custom functions to interact with financial APIs, retrieving real-time stock prices, company overviews, news headlines, and sentiment analysis. Gemini can call these functions based on user queries, enhancing its capabilities within conversations.   
+This project demonstrates function calling with the Google Gemini API. It provides custom functions to interact with financial APIs, retrieving real-time stock prices, company overviews, news headlines, and sentiment analysis. Gemini can call these functions based on user queries, enhancing its capabilities within conversations.
 
 #### What is Function Calling?
 
@@ -45,7 +45,7 @@ Code consists of several functions:
 
 #### Function Calling with Prompts
 
-The function calling capability allows Gemini to not only execute functions based on prompts but also maintain context throughout a conversation.   
+The function calling capability allows Gemini to not only execute functions based on prompts but also maintain context throughout a conversation.
 
 Example:
 
@@ -73,13 +73,13 @@ console.log(result.response.text() + '\n');
 * **Response:** 'The current price of MSFT is 278.14'
 
 **Prompt 2:**
-* **Market news about the company?**", leverages the context established in the previous prompt.  Gemini recognizes that the "company" refers to Microsoft (MSFT) and executes the following function call:
+* **What are the latest developments from their competitors?** leverages the context established in the previous prompt.  Gemini recognizes that the "company" refers to Microsoft (MSFT) and executes the following function call:
 
 ```json
 [{"name":"getCompanyNews","args":{"ticker":"MSFT"}}]
 ```
 
-* **Response:** 'Microsoft has announced...'
+* **Response:** 'The latest news headlines I found about MSFT competitors include:'
 
 #### Prerequisites
 
