@@ -13,10 +13,12 @@ async function main() {
         const chat = generativeModel.startChat();
 
         const prompt1 = "How much is the price of MSFT stock? ";
+        console.log(prompt1 + '\n');
         let result1 = await chat.sendMessage(prompt1);
         await handleFunctionCalls(result1, chat);
 
-        const  prompt2 = "What is the last news about it's AI business?";
+        const  prompt2 = "What are the latest developments from their competitors?";
+        console.log(prompt2 + '\n');
         const result2 = await chat.sendMessage(prompt2);
         await handleFunctionCalls(result2, chat);
     } catch (error) {
