@@ -5,7 +5,12 @@ const { getExchangeRateFunctionDeclaration, getStockPriceFunctionDeclaration,
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const generativeModel = genAI.getGenerativeModel({
-    model: 'gemini-1.5-flash-latest',
+    model: 'gemini-1.5-pro',
+    generationConfig: {
+    temperature: 0.5,
+    topK: 50,
+    topP: 0.8,
+    },
     tools: {
         functionDeclarations: [
             getExchangeRateFunctionDeclaration,
@@ -41,7 +46,8 @@ exports.generativeModel = generativeModel;
 async function handleFunctionCalls(resp ={}, chat ={}) {
     const functionCallsLength = resp?.response?.functionCalls()?.length || 0;
     if (functionCallsLength === 0) {
-        throw Error('LLM is experiencing problems, check quotas');
+        console.error(`No function calls found in the LLM response. Proceeding without calling external APIs.`);
+        return;
     }
     for (let i = 0; i < functionCallsLength; i++) {
         const call = resp.response.functionCalls()[0];

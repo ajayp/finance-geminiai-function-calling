@@ -21,6 +21,11 @@ async function main() {
         console.log(competitorNewsPrompt + '\n');
         const competitorNewsResult = await chat.sendMessage(competitorNewsPrompt);
         await handleFunctionCalls(competitorNewsResult, chat);
+
+        const  currencyConversionPrompt = "What is the FX rate between the USD and EUR?";
+        console.log(currencyConversionPrompt + '\n');
+        const  currencyConversionResult = await chat.sendMessage(currencyConversionPrompt);
+        await handleFunctionCalls(currencyConversionResult, chat);
     } catch (error) {
         console.error(`Error in main function: ${error.message}, exiting`);
         // TODO  adding more robust error handling, such as retry logic or
