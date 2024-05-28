@@ -1,7 +1,6 @@
 const { getCurrencyConversionFromAPI, getCompanyOverviewFromApi,
-     getCompanyNewsFromApi, getNewsWithSentimentFromApi } = require('../APIs/vantage');
-
-const { getStockPriceFromApi } = require('../APIs/polygon');
+     getCompanyNewsFromApi, getNewsWithSentimentFromApi, getStockPriceFromApi } = require('../APIs/vantage');
+// const { getStockPriceFromApi } = require('../APIs/polygon');
 
 const apiServicesFunctions = {
     getExchangeRate: ({ currencyFrom, currencyTo }) => getCurrencyConversionFromAPI(currencyFrom, currencyTo),
@@ -43,13 +42,13 @@ module.exports = {
     },
     getNewsWithSentimentFunctionDeclaration: {
         name: "getNewsWithSentiment",
-        description: "Gets live and historical market news and sentiment data",
+        description: "Returns live and historical market news and sentiment data",
         parameters: {
             type: "object",
             properties: {
                 newsTopic: {
                     type: "string",
-                    description: "News topic to learn about.",
+                    description: "News topic to learn about. Supported topics include competitors, earnings, ipo, mergers and acquisitions, financial markets, economy fiscal, economy monetary, economy macro, energy transportation, finance, life sciences, manufacturing, real estate, retail wholesale, and technology",
                 },
             },
             required: ["newsTopic"],
@@ -57,7 +56,7 @@ module.exports = {
     },
     getStockPriceFunctionDeclaration: {
         name: "getStockPrice",
-        description: "Fetch the current stock price of a given company",
+        description: "Return the current stock price of a given company",
         parameters: {
             type: "object",
             properties: {
