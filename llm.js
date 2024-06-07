@@ -5,7 +5,7 @@ const { getExchangeRateFunctionDeclaration, getStockPriceFunctionDeclaration,
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const generativeModel = genAI.getGenerativeModel({
-    model: 'gemini-1.5-pro',
+    model: 'gemini-1.5-flash',
     generationConfig: {
     temperature: 0.5,
     topK: 50,
