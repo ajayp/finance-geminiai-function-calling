@@ -8,7 +8,6 @@ describe('main function integration tests', () => {
   const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
   test('should handle stock price query correctly', async () => {
-
     const chat = generativeModel.startChat();
     const prompt = "What is the most recent price of microsoft stock?";
     const resp = await chat.sendMessage(prompt);
@@ -17,7 +16,7 @@ describe('main function integration tests', () => {
   });
 
   test('should handle competitor news query correctly', async () => {
-    await delay(1000); //due to quotas
+    await delay(2000); //due to quotas
     const chat = generativeModel.startChat();
     const prompt = "What are the latest developments from MSFT's competitors?";
     const resp = await chat.sendMessage(prompt);
@@ -26,7 +25,7 @@ describe('main function integration tests', () => {
   });
 
   test('should handle currency conversion query correctly', async () => {
-    await delay(1000);
+    await delay(2000);
     const chat = generativeModel.startChat();
     const prompt = "What is the FX rate between the USD and EUR?";
     const resp = await chat.sendMessage(prompt);
